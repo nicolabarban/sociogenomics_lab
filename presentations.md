@@ -10,7 +10,7 @@
 * Be creative
 
 ---
-## Topics Febrauary-March
+## Topics February-March
 
 ### 1. Birth of Eugenics 
 
@@ -54,4 +54,4 @@
 
 ### 9. Measuring Biological Ageing
 
-### 10 
+### 10 Genetic predictions
