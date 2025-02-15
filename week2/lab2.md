@@ -8,7 +8,7 @@ PLINK is a free, open-source software package for genomic data analysis. It was 
 PLINK is widely used in the field of human genetics and has been cited in numerous scientific publications. It is compatible with various file formats commonly used in genetics research, such as VCF, BED, and PED formats. PLINK is available for download on the project's website and is actively maintained by a team of developers.
 
 
-**Let's start from our home directory and change directory to** 
+**Let's start from our home directory** 
 ```
 cd $HOME
 ```
@@ -55,11 +55,14 @@ pwd
 ```
 
 
-### Upload the file `hapmap_CEU.map` and `hapmap_CEU.ped`
+### Get the plink files  from Hapmap
 
+1. download the data using this command
 ```
 
 ```
+
+2. Upload the data using the google shell utility
 
 ## How to read PLINK files
 
@@ -73,11 +76,11 @@ we start with PLINK binary files
 
 1. `.map` file  contains info on the markers
 ```
-head hapmap_CEU.map
+head hapmap_CEU.bim
 ```
 2. `.ped file  contains info on the individuals 
 ```
- less hapmap_CEU.map
+ heaf hapmap_CEU.fam
 ```
 2. `.ped file.ped
 ```
