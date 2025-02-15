@@ -2,10 +2,10 @@
 ## Instructor: Prof. Nicola Barban
 ## University of Bologna
 
-
+<!---
 []: ## Students' presentations
 []: * [Topics and Instructions](presentations.md)>
-
+-->
 
 ## Week 2
 
