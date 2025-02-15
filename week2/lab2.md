@@ -59,7 +59,9 @@ pwd
 
 1. download the data using this command
 ```
+wget https://www.nicolabarban.com/sociogenomics_lab/data/week2.zip
 
+unzip wee2.zip
 ```
 
 2. Upload the data using the google shell utility
