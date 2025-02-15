@@ -59,9 +59,10 @@ pwd
 
 1. download the data using this command
 ```
-wget https://www.nicolabarban.com/sociogenomics_lab/data/week2.zip
+wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bed --no-check-certificate
+wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bim --no-check-certificate
+wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.fam --no-check-certificate
 
-unzip wee2.zip
 ```
 
 2. Upload the data using the google shell utility
@@ -76,42 +77,37 @@ unzip wee2.zip
 we start with PLINK binary files 
 
 
-1. `.map` file  contains info on the markers
+1. `.bim` file  contains info on the markers
+
 ```
 head hapmap_CEU.bim
 ```
-2. `.ped file  contains info on the individuals 
-```
- heaf hapmap_CEU.fam
-```
-2. `.ped file.ped
+
+2. `.fam file  contains info on the individuals 
+
 ```
 
-
-
-
-
-2. `.bed` files are not readable!
+3. `.bed` files are not readable!
 ```
-head Data/hapmap-ceu.bed
+less Data/hapmap-ceu.bed
 ```
 ### Recode PLINK file
 
 
 Recode into map and ped files
 ```
-./plink --bfile hapmap-ceu --recode --out Results/hapmap-ceu
+./plink --bfile hapmap_CEU --recode --out hapmap_CEU
 ```
 
 1. `.map` file  contains info on the markers
 
 ```
-head hapmap-ceu.map
+head hapmap_CEU.map
 ```
 
 2. `.ped` file  contains info on the individual genotypes
 ```
-less hapmap-ceu.ped
+less hapmap_CEU.ped
 ```
 
 
@@ -120,17 +116,33 @@ less hapmap-ceu.ped
 In this way we select only a specific marker, in this case SNP `rs9930506`
 ```
 
-./plink     --bfile Data/hapmap-ceu \
+./plink     --bfile hapmap_CEU \
             --snps  rs9930506 \
         	--make-bed \
-            --out  Results/rs9930506sample
+            --out  rs9930506sample
 
 ```
 
-###Import VCF into plink
- A VCF (Variant Call Format) file is a standard file format used in bioinformatics to store genetic variation data, such as single nucleotide polymorphisms (SNPs) and insertions/deletions (indels), typically obtained from DNA sequencing. It contains information about the genomic location, alleles, genotype, and quality score of each variant called.
 
-```
-./plink --vcf  Data/ALL.chr21.vcf.gz --make-bed --out Results/test_vcf
+### how many observations?
 ```
 
+ wc -l hapmap_CEU.fam
+```
+ 
+### how many variants?
+```
+
+ wc -l hapmap_CEU.bim
+```
+
+
+## Allele frequency
+
+### We can calculate allele frequency
+```
+
+ ./plink --bfile hapmap_CEU --freq --out Allele_Frequency
+head Allele_Frequency.frq 
+
+```
