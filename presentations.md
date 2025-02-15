@@ -37,10 +37,10 @@
 * [Bad Blood podcast Episode 6](https://www.bbc.co.uk/sounds/play/m001gj50)
 * [link to AMCG paper](https://www.gimjournal.org/article/S1098-3600(23)01068-7/fulltext)
 
-### 5. Heritability, Twin Studies
-*[Dalton Conley TED talk](https://www.youtube.com/watch?v=AMYM1SXDefQ)
-*[Classical twin studies and beyond](https://www.nature.com/articles/nrg932)
-*[Heritability in the genomics era — concepts and misconceptions](https://www.nature.com/articles/nrg2322)
+### 5. Twin Studies and  Heritability
+* [Dalton Conley TED talk](https://www.youtube.com/watch?v=AMYM1SXDefQ)
+* [Classical twin studies and beyond](https://www.nature.com/articles/nrg932)
+* [Heritability in the genomics era — concepts and misconceptions](https://www.nature.com/articles/nrg2322)
 
 
 
