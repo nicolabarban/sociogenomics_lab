@@ -58,6 +58,7 @@ pwd
 ### Get the plink files  from Hapmap
 
 1. download the data using this command
+
 ```
 wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bed --no-check-certificate
 wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bim --no-check-certificate
