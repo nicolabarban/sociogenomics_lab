@@ -9,7 +9,7 @@
 
 ## Week 2
 
-* [Lab 2](week2/lab2.md)
+* [Lab ](week2/lab2.md)
 
 ### Data
 * [data](https://www.dropbox.com/scl/fo/vhd9e87zpcpmfv5dk0acn/AIexpTssvIqr3x-jBWt4sfw?rlkey=x7ebz9qdavj0cya8vez7e2s55&dl=0)

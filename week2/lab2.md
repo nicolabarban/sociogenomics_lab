@@ -91,7 +91,7 @@ head hapmap_CEU.fam
 
 3. `.bed` files are not readable!
 ```
-less Data/hapmap-CEU.bed
+less hapmap-CEU.bed
 ```
 ### Recode PLINK file
 

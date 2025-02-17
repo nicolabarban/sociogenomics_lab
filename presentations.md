@@ -9,6 +9,9 @@
 * Do not hesitate to make questions to sparkle discussion in class after your presentation
 * Be creative
 
+### Schedule 
+[Link to Google Sheet](https://docs.google.com/spreadsheets/d/1o5zT3MD26qwEwNjszzkAibP4LqyPcX5tALOloeLyqLA/edit?gid=0#gid=0)
+
 ---
 ## Topics February-March
 
@@ -26,7 +29,6 @@
 
 ### 3. Genetic sorting and social mobility
 
-
 * Chapter 4, "The Genome Factor, Conley & Fletcher"
 * [The Bell Curve Revisited: Testing Controversial Hypotheses with Molecular Genetic Data](https://www.sociologicalscience.com/download/vol-3/july/SocSci_v3_520to539.pdf)
 
@@ -38,6 +40,7 @@
 * [link to AMCG paper](https://www.gimjournal.org/article/S1098-3600(23)01068-7/fulltext)
 
 ### 5. Twin Studies and  Heritability
+
 * [Dalton Conley TED talk](https://www.youtube.com/watch?v=AMYM1SXDefQ)
 * [Classical twin studies and beyond](https://www.nature.com/articles/nrg932)
 * [Heritability in the genomics era — concepts and misconceptions](https://www.nature.com/articles/nrg2322)
