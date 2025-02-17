@@ -86,15 +86,18 @@ head hapmap_CEU.bim
 2. `.fam file  contains info on the individuals 
 
 ```
+head hapmap_CEU.fam
+```
 
 3. `.bed` files are not readable!
 ```
-less Data/hapmap-ceu.bed
+less Data/hapmap-CEU.bed
 ```
 ### Recode PLINK file
 
 
 Recode into map and ped files
+
 ```
 ./plink --bfile hapmap_CEU --recode --out hapmap_CEU
 ```
@@ -125,14 +128,13 @@ In this way we select only a specific marker, in this case SNP `rs9930506`
 
 
 ### how many observations?
-```
 
+```
  wc -l hapmap_CEU.fam
 ```
  
 ### how many variants?
 ```
-
  wc -l hapmap_CEU.bim
 ```
 

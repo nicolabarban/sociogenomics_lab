@@ -12,11 +12,10 @@
 * [Lab 2](week2/lab2.md)
 
 ### Data
-* [week2.zip](https://www.dropbox.com/s/apaal9fjpa01inc/week2.zip?dl=0)
+* [data](https://www.dropbox.com/scl/fo/vhd9e87zpcpmfv5dk0acn/AIexpTssvIqr3x-jBWt4sfw?rlkey=x7ebz9qdavj0cya8vez7e2s55&dl=0)
 
 
-<!--- This is an HTML comment in Markdown 
-
+<!---
 ## Week 3
 
 * [Lab 3](week3/lab3.md)
