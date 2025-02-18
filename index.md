@@ -4,10 +4,16 @@
 
 
 ## Students' presentations
-* [Topics and Instructions](presentations.md)>
+* [Topics and Instructions](presentations.md)
+
+
+## Week 1
+
+* [Slides Lecture](lectures/week1.pdf)
 
 
 ## Week 2
+* [Slides Lecture](lectures/week2.pdf)
 
 * [Lab ](week2/lab2.md)
 
