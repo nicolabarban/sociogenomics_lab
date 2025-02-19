@@ -2,6 +2,9 @@
 ## Instructor: Prof. Nicola Barban
 ## University of Bologna
 
+## UniBO demography mailing list
+![QR code](QR code mailing list.001.jpeg)
+
 
 ## Students' presentations
 * [Topics and Instructions](presentations.md)
