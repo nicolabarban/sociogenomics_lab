@@ -20,14 +20,15 @@
 * [data](https://www.dropbox.com/scl/fo/vhd9e87zpcpmfv5dk0acn/AIexpTssvIqr3x-jBWt4sfw?rlkey=x7ebz9qdavj0cya8vez7e2s55&dl=0)
 
 
-<!---
+
 ## Week 3
 
 * [Lab 3](week3/lab3.md)
 ### Data
-* [week3.zip](https://www.dropbox.com/s/z42fy0pp5zkmwi2/lab3.zip?dl=0)
+* [week3.zip](https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&dl=0
+)
 
-
+<!---
 ## Week 4
 
 * [Lab 4](week4/lab4.md)
