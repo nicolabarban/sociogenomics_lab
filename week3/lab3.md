@@ -1,5 +1,6 @@
 # Lab Week 3. Sociogenomics
 
+[Google Shell](https://cloud.google.com/shell/docs/launching-cloud-shell?hl=en)
 
 ## Description
 In this lab we will learn:
@@ -8,10 +9,14 @@ In this lab we will learn:
 * Quality control procedure with plink
 
 
+
+=======
+
 ### Here are some basic Linux commands:
 
 * `pwd`: Displays current directory
-* `mkdir`: Creates directory echo: copies the command line to the screen ls : lists the names of files in the current directory.
+* `mkdir`: Creates directory echo: copies the command line to the screen 
+* `ls` : lists the names of files in the current directory.
 * `cat`: displays a text file
 * `rm`: deletes a file
 * `cp`: copies a file
@@ -31,13 +36,11 @@ In this lab we will learn:
 rm *.*
 ``` 
 
-### Obtain the data
-
+### Download the files we need for today's lecture
 ```
 cd $HOME
 
-wget -O lab_week3.zip https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&dl=0
-
+wget -O week3.zip https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&e=1&st=k1x60x1z&dl=0
 unzip -o lab_week3.zip 
 mv week3/*.*  ./
 rm -r week3/
@@ -94,12 +97,14 @@ Calculate linkage disequilibrium
 ```
 ./plink --bfile 1kg_hm3 \
 	 	--keep 1kg_samples_EUR.txt \
+		--make-bed \
 		--out 1kg_hm3_EUR
 ```
 
 ```
 ./plink --bfile 1kg_hm3 \
 	 	--remove 1kg_samples_EUR.txt \
+		--make-bed \
 		--out 1kg_hm3_NOT_EUR
 ```
 
@@ -147,7 +152,7 @@ head 1kg_missing_data.imiss
 ### Select individuals with genotype at least 95% complete
 We can select individuals based on the completness of their genotype
 ```
-./plink --bfile 1kg_hm3.fam --make-bed --mind 0.05 --out 1kg_highgeno
+./plink --bfile 1kg_hm3 --make-bed --mind 0.05 --out 1kg_highgeno
 ```
 
 
