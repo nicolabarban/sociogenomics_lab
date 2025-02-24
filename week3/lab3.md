@@ -231,7 +231,7 @@ Allele frequency
 deviation from HWE
 ```
 
-./plink --bfile 1kg_EU_BMI \
+./plink --bfile 1kg_BMI \
 	 	--hwe 0.00001 \
 		--make-bed  --out 1kg_hm3_hwe
 
@@ -243,7 +243,7 @@ deviation from HWE
 ```
 
 
-./plink     --bfile 1kg_EU_BMI \
+./plink     --bfile 1kg_BMI \
        	--mind 0.03 \
        	--geno 0.05 \
        	--maf 0.01 \
