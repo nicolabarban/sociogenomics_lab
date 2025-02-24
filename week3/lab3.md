@@ -141,12 +141,16 @@ Filter females
 
 ./plink --bfile 1kg_hm3 --missing --out 1kg_missing_data
 ```
-#### variants
-```
+### Sample missing data report
 
+```
 head 1kg_missing_data.imiss
 ```
+### variant-based missing data report
 
+```
+1kg_missing_data.lmiss
+```
 
 
 ### Select individuals with genotype at least 95% complete
