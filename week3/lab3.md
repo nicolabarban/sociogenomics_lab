@@ -7,6 +7,30 @@ In this lab we will learn:
 * Compute descripitve statistics with PLINK on genetic files 
 * Quality control procedure with plink
 
+
+### Here are some basic Linux commands:
+
+* `pwd`: Displays current directory
+* `mkdir`: Creates directory echo: copies the command line to the screen ls : lists the names of files in the current directory.
+* `cat`: displays a text file
+* `rm`: deletes a file
+* `cp`: copies a file
+* `mv`: changes the name of a file
+* `grep`: searches for a string in a file
+* `wc`:count the number of words/lines in a file
+* `head`: displays the beginning of a file tail: displays the end of a file
+* `sort`: displays the lines of a file in order
+* `uniq`: Removes adjacent duplicate lines (file has to be sorted!)
+* `gzip`, `gunzip`: Compress, decompress files with .gz extension.
+
+
+### Remove all files from your directory
+
+
+```
+rm *.*
+``` 
+
 ### Obtain the data
 
 ```
