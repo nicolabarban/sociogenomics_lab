@@ -41,7 +41,7 @@ rm *.*
 cd $HOME
 
 wget -O week3.zip https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&e=1&st=k1x60x1z&dl=0
-unzip -o lab_week3.zip 
+unzip -o week3.zip 
 mv week3/*.*  ./
 rm -r week3/
 ```
