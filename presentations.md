@@ -51,8 +51,8 @@
 
 ### 6. Genetic correlations
 
-*[Genetic correlates of social stratification in Great Britain](papers/abdelloaoui_et_al2019.pdf)
-*[Associations between common genetic variants and income provide insights about the socio-economic health gradient](https://www.nature.com/articles/s41562-024-02080-7)
+* [Genetic correlates of social stratification in Great Britain](papers/abdelloaoui_et_al2019.pdf)
+* [Associations between common genetic variants and income provide insights about the socio-economic health gradient](https://www.nature.com/articles/s41562-024-02080-7)
 ### 7. Direct and indirect genetic effects
 * [Deconstructing the sources of genotype-phenotype associations in humans](https://alextisyoung.github.io/assets/pdf/deconstructing.pdf)
 * [Family-GWAS reveals effects of environment and mating on genetic associations](https://www.medrxiv.org/content/medrxiv/early/2024/10/04/2024.10.01.24314703.full.pdf)
