@@ -51,10 +51,17 @@
 
 ### 6. Genetic correlations
 
+*[Genetic correlates of social stratification in Great Britain](papers/abdelloaoui_et_al2019.pdf)
+*[Associations between common genetic variants and income provide insights about the socio-economic health gradient](https://www.nature.com/articles/s41562-024-02080-7)
 ### 7. Direct and indirect genetic effects
-
-### 8. Gene-Environment correlations
-
+* [Deconstructing the sources of genotype-phenotype associations in humans](https://alextisyoung.github.io/assets/pdf/deconstructing.pdf)
+* [Family-GWAS reveals effects of environment and mating on genetic associations](https://www.medrxiv.org/content/medrxiv/early/2024/10/04/2024.10.01.24314703.full.pdf)
+### 8. Gene-Environment interplay
+* [The Economics and Econometrics of Gene–Environment Interplay](papers/biroli_et_al_2025.pdf)
+* [Interactions between polygenic scores and environments: Methodological and conceptual challenges](https://sociologicalscience.com/download/vol-7/september/SocSci_v7_465to486.pdf)
 ### 9. Measuring Biological Ageing
-
-### 10 Genetic predictions
+* [Integrating the environmental and genetic architectures of aging and mortality](https://www.nature.com/articles/s41591-024-03483-9)
+* [DNA methylation-based biomarkers and the epigenetic clock theory of ageing](https://www.nature.com/articles/s41576-018-0004-3)
+### 10 Polygenic indexes
+* [Clinical use of current polygenic risk scores may exacerbate health disparities](papers/martin_2019.pdf)
+* [Human demographic history impacts genetic risk prediction across diverse populations](https://www.cell.com/action/showPdf?pii=S0002-9297%2817%2930107-6)

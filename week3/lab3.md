@@ -10,7 +10,6 @@ In this lab we will learn:
 
 
 
-=======
 
 ### Here are some basic Linux commands:
 
