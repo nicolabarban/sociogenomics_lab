@@ -1,19 +1,22 @@
 # Load necessary library
 library(data.table)
 
-# Load the data
-file_path <- "height_sim.phen"
-data <- fread(file_path)
-
-# Check the structure of the data
-str(data)
-
-# Identify the numerical columns and add random noise
-numeric_cols <- sapply(data, is.numeric)
-data[, (names(data)[numeric_cols]) := lapply(.SD, function(x) x + rnorm(length(x), mean = 0, sd = 1)), .SDcols = numeric_cols]
-
-# Save the modified dataset
+# Define file paths
+input_path <- "height_sim.phen"
 output_path <- "height_sim2.phen"
-fwrite(data, output_path)
+
+# Load the data
+data <- fread(input_path, header = FALSE)
+
+# Ensure the file has at least three columns
+if (ncol(data) < 3) {
+  stop("The input file must have at least three columns.")
+}
+
+# Extract necessary columns
+data_out <- data[, .(V1 = 0, V2 = V2, V3 = V3 + rnorm(.N, mean = 0, sd = 1))]
+
+# Save the modified dataset (tab-separated, no header)
+fwrite(data_out, output_path, sep = "\t", col.names = FALSE, quote = FALSE)
 
 cat("Modified file saved to:", output_path, "\n")
