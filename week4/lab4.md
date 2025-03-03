@@ -38,7 +38,7 @@ rm -r __MACOSX
 
 
 ./plink     --bfile hapmap_CEU \
-            --nonfounders \
+			--filter-founders \
 			--autosome \
 			--snps-only \
        	  	--mind 0.03 \
@@ -122,15 +122,15 @@ rm -r gcta-1.94.3-linux-kernel-3-x86_64/
 ### Getting Phenotype
 
 ```
-wget https://www.nicolabarban.com/sociogenomics_lab/data/height_sim.phen --no-check-certificate
-head height_sim.phen
+wget https://www.nicolabarban.com/sociogenomics_lab/data/height_sim2.phen --no-check-certificate
+head height_sim2.phen
 
 
 ```
 
 
 ```
-./gcta64  --reml  --grm 1kg_hm3_allSNPs	--pheno height_sim.phen --grm-adj 0 --grm-cutoff 0.05 --out height_h2
+./gcta64  --reml  --grm 1kg_hm3_allSNPs	--pheno height_sim2.phen --grm-adj 0 --grm-cutoff 0.05 --out height_h2
 head height_h2.hsq
 ```
 
@@ -140,7 +140,7 @@ head height_h2.hsq
 ### Linear additive model
 ```
 ./plink    	--bfile 1kg_hm3 \
-			--pheno height_sim.phen \
+			--pheno height_sim2.phen \
         	--snps rs9674439 \
        	 	--assoc \
       	 	--linear \
@@ -156,7 +156,7 @@ head height_rs9674439.assoc.linear
 ### Linear dominant analysis
 ```
 ./plink    	 --bfile 1kg_hm3 \
-			--pheno height_sim.phen \
+			--pheno height_sim2.phen \
         	 --snps rs9674439 \
        	 	--assoc \
       	 	--linear dominant \
@@ -166,7 +166,7 @@ head height_rs9674439.assoc.linear
 ### All vaariants, a.k.a GWAS
 ```
 ./plink    	--bfile 1kg_hm3 \
-			--pheno height_sim.phen \
+			--pheno height_sim2.phen \
        	 	--assoc \
       	 	--linear \
       		--out height_gwas
