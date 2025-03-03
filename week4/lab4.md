@@ -26,9 +26,10 @@ YOu can download data from 1000Genome from last's week tutorial
 cd $HOME
 
 wget -O week3.zip https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&e=1&st=k1x60x1z&dl=0
-unzip -o week3.zip 
+unzip  week3.zip 
 mv week3/*.*  ./
 rm -r week3/
+rm -r __MACOSX
 ```
 
 
@@ -129,7 +130,7 @@ head height_sim.phen
 
 
 ```
-./gcta64  --reml  --grm 1kg_hm3_allSNPs	--pheno height_sim.phen --grm-adj 0 --grm-cutoff 0.05 --out BMI_h2
+./gcta64  --reml  --grm 1kg_hm3_allSNPs	--pheno height_sim.phen --grm-adj 0 --grm-cutoff 0.05 --out height_h2
 head height_h2.hsq
 ```
 
@@ -145,6 +146,12 @@ head height_h2.hsq
       	 	--linear \
       		--out height_rs9674439
 ```
+
+
+```
+head height_rs9674439.assoc.linear
+```
+
 
 ### Linear dominant analysis
 ```
@@ -163,3 +170,4 @@ head height_h2.hsq
        	 	--assoc \
       	 	--linear \
       		--out height_gwas
+```			
