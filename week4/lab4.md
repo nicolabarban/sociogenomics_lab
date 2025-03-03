@@ -11,14 +11,24 @@ In this lab we will learn:
 ## Part I . Managing files and directories. (no need after week 4, just repeating the command)
 Let's have a look a the file. 
 
-
-Download the data using this command
+For this tutorial we will use data from hapmap and 1000 Genome. 
+Download the data using this command.
 
 ```
 wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bed --no-check-certificate
 wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.bim --no-check-certificate
 wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.fam --no-check-certificate
 
+```
+YOu can download data from 1000Genome from last's week tutorial
+
+```
+cd $HOME
+
+wget -O week3.zip https://www.dropbox.com/scl/fi/kvsdtvsl3m4gl19omle1y/week3.zip?rlkey=3fyj402e77jsvo97iwz8ke7sc&e=1&st=k1x60x1z&dl=0
+unzip -o week3.zip 
+mv week3/*.*  ./
+rm -r week3/
 ```
 
 
@@ -95,55 +105,62 @@ Calculate relatedness matrix
 ## GCTA
 
 ```
-wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.4-linux-kernel-4-x86_64.zip 
-mv gcta-1.94.1-linux-kernel-4-x86_64/gcta64 ./
-rm -r gcta-1.94.1-linux-kernel-4-x86_64/
-
+wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.3-linux-kernel-3-x86_64.zip
+unzip gcta-1.94.3-linux-kernel-3-x86_64.zip
+mv gcta-1.94.3-linux-kernel-3-x86_64/gcta64 ./
+rm -r gcta-1.94.3-linux-kernel-3-x86_64/
+./gcta64
 
 ```
 
 ```
-./gcta64 --bfile 1kg_hm3 /
-		--keep 1kg_samples_EUR.txt /
-		 --make-grm-bin --out 1kg_hm3_allSNPs
+./gcta64 --bfile 1kg_hm3 		--keep 1kg_samples_EUR.txt 		 --make-grm --out 1kg_hm3_allSNPs
+
+```
+
+### Getting Phenotype
+
+```
+wget https://www.nicolabarban.com/sociogenomics_lab/data/height_sim.phen --no-check-certificate
+head height_sim.phen
 
 
-./gcta64  --reml  --grm 1kg_hm3_allSNPs /
-	  	--pheno BMI_pheno.txt /
-		--grm-adj 0 /
-		--grm-cutoff 0.05 /
-		--out BMI_h2
+```
 
+
+```
+./gcta64  --reml  --grm 1kg_hm3_allSNPs	--pheno height_sim.phen --grm-adj 0 --grm-cutoff 0.05 --out BMI_h2
+head height_h2.hsq
 ```
 
 
 ## Association analys
 
-Linear additive model
+### Linear additive model
 ```
-./plink    	--bfile 1kg_EU_BMI \
+./plink    	--bfile 1kg_hm3 \
+			--pheno height_sim.phen \
         	--snps rs9674439 \
        	 	--assoc \
       	 	--linear \
-      		--out BMIrs9674439
-```
-Logistic additive model
+      		--out height_rs9674439
 ```
 
-./plink    	--bfile 1kg_hm3 \
-			--pheno 
-        	--snps rs9674439 \
-       	 	--assoc \
-      	 	--logistic \
-      	 	--out Overweight_rs9674439
-
-```
-Linear dominant analysis
+### Linear dominant analysis
 ```
 ./plink    	 --bfile 1kg_hm3 \
+			--pheno height_sim.phen \
         	 --snps rs9674439 \
        	 	--assoc \
       	 	--linear dominant \
-      	 	--out BMIrs9674439
+      	 	--out height_rs9674439_dom
 ```		 
 	
+### All vaariants, a.k.a GWAS
+```
+./plink    	--bfile 1kg_hm3 \
+			--pheno height_sim.phen \
+       	 	--assoc \
+      	 	--linear \
+      		--out height_rs9674439
+```
