@@ -41,8 +41,8 @@ wget https://www.nicolabarban.com/sociogenomics_lab/data/hapmap_CEU.fam --no-che
 
 Calculate linkage disequilibrium
 ```
-./plink --bfile hapmap_CEU_QC \
-	 	--ld rs9629043 rs2905035 \
+./plink --bfile 1kg_hm3 \
+	 	--ld rs1048488 rs3115850 \
 		--out ld_example
 ```
 Check also this: https://ldlink.nih.gov/?tab=home
@@ -51,39 +51,42 @@ Check also this: https://ldlink.nih.gov/?tab=home
 ## Calculate independent SNPs (Pruning)
 ```
 
-./plink 	 --bfile hapmap_CEU_QC  \
+./plink 	 --bfile 1kg_hm3  \
         	--indep-pairwise 50 5 0.2 \
-        	--out  hapmap_CEU_QC
+        	--out  1kg_hm3
 			
 			
 ```
+
+
 ```
-./plink --bfile hapmap_CEU_QC \
-	 	--ld rs9629043 rs3094315 \
+./plink --bfile 1kg_hm3 \
+	 	--ld rs1048488 rs2519031 \
 		--out ld_example2
 ```
 
 Select from original sample independent SNPs
 ```
-./plink		--bfile  hapmap_CEU_QC \
-			--extract hapmap_CEU_QC.prune.in \
+./plink		--bfile  1kg_hm3 \
+			--extract 1kg_hm3.prune.in \
 			--make-bed \
- 			--out  hapmap_CEU_QC_indep
+ 			--out  1kg_hm3_indep
 
 ```
+
 
 ## Calculate IBS and relatedness
 
 Calculate Identity By State matrix
 ```
-./plink --bfile  kg_hm3_pruned \
+./plink --bfile  1kg_hm3_indep \
 		--keep 1kg_samples_EUR.txt \
 		--distance --out ibs_matrix
 ```
 Calculate relatedness matrix
 
 ```
-./plink --bfile 1kg_hm3_pruned --keep 1kg_samples_EUR.txt --make-rel --out rel_matrix
+./plink --bfile 1kg_hm3_indep --keep 1kg_samples_EUR.txt --make-rel --out rel_matrix
 
 ```
 
