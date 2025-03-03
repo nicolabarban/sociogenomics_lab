@@ -162,5 +162,4 @@ head height_h2.hsq
 			--pheno height_sim.phen \
        	 	--assoc \
       	 	--linear \
-      		--out height_rs9674439
-```
+      		--out height_gwas
