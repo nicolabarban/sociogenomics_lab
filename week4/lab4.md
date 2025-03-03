@@ -8,7 +8,7 @@ In this lab we will learn:
 * Calculate IBS and relatedness
 * Association analys
 
-## Part I . Managing files and directories. (no need after week 4, just repeating the command)
+##  Managing files and directories. 
 Let's have a look a the file. 
 
 For this tutorial we will use data from hapmap and 1000 Genome. 
