@@ -67,5 +67,71 @@ You can also check **Z0, Z1, and Z2** values:
 head ibd_results.genome 
 
 ```
+# Identifying Relatives in a PLINK File Using `awk`
+
+After computing **identity by descent (IBD)** with PLINK, you can use `awk` to filter relationships based on **PI_HAT** values from the `ibd_results.genome` file.
+
+## **Filtering Relatives Using `awk`**
+
+### **1. Find Possible Duplicates (PI_HAT > 0.9)**
 
 
+```bash
+awk '$10 > 0.9' ibd_results.genome
+```
+
+
+Identifies individuals who share more than 90% of their genome, likely duplicate samples or identical twins.
+
+### **2.Find Full Siblings (0.4 ≤ PI_HAT ≤ 0.6)**
+
+
+```bash
+awk '$10 >= 0.4 && $10 <= 0.6' ibd_results.genome
+```
+
+
+
+### **3. Find Half-Siblings or Grandparent-Grandchild (0.2 ≤ PI_HAT ≤ 0.4)**
+
+
+```bash
+awk '$10 >= 0.2 && $10 <= 0.4' ibd_results.genome
+```
+
+### **4. Find First Cousins (0.1 ≤ PI_HAT ≤ 0.2)**
+
+
+```bash
+awk '$10 >= 0.1 && $10 <= 0.2' ibd_results.genome
+
+```
+
+### **5. Find Unrelated Individuals (PI_HAT < 0.1)**
+
+
+```bash
+awk '$10 < 0.1' ibd_results.genome
+
+```
+### **How many relatives**
+
+we can use the command `wc -l`
+
+```bash
+awk '$10 > 0.9' ibd_results.genome | wc -l
+awk '$10 >= 0.4 && $10 <= 0.6' ibd_results.genome | wc -l
+awk '$10 >= 0.2 && $10 <= 0.4' ibd_results.genome | wc -l
+awk '$10 >= 0.1 && $10 <= 0.2' ibd_results.genome | wc -l
+awk '$10 < 0.1' ibd_results.genome | wc -l
+```
+
+## **Remove relatives Using PLINK’s `--rel-cutoff` Option**
+
+PLINK provides a built-in option to **prune related individuals** based on their **PI_HAT** values. This ensures that only **unrelated individuals** remain in the dataset.
+
+### **Command to Remove Related Individuals**
+```bash
+./plink --bfile 1kg_hm3 --rel-cutoff 0.1 --make-bed --out unrelated_samples
+
+```
