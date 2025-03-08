@@ -206,4 +206,30 @@ ggplot(data, aes(x=pca1, y=pca2, col=Population.name))+
      	 xlab("PC1") + ylab("PC2")+
  	 labs(col = "")
 ```	 	 	 
-	 
+
+## Run a GWAS after QC and adding covariates
+**PLINK QC**. combine different commands in one go
+```
+
+
+./plink     --bfile 1kg_hm3 \
+			--autosome \
+			--snps-only \
+       	  	--mind 0.03 \
+       		--geno 0.05 \
+       		--maf 0.05 \
+    		--hwe 1e-06 \
+			--rel-cutoff 0.1 \
+		 	--keep 1kg_samples_EUR.txt \
+        	--make-bed  --out 1kg_hm3_QC_CEU    
+			
+```
+### Run a  GWAS
+```
+./plink    	--bfile 1kg_hm3_QC_CEU \
+			--pheno height_sim2.phen \
+       	 	--assoc \
+      	 	--linear \
+			--covar 1kg_pca.eigenvec \
+      		--out height_gwas_covar
+```		 
