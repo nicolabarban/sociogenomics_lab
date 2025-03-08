@@ -31,13 +31,14 @@
 
 * [Lab 4](week4/lab4.md)
 
-<!---
-* [week3.zip](https://www.dropbox.com/s/z42fy0pp5zkmwi2/lab3.zip?dl=0)
+
 
 
 ## Week 5
 
  * [Lab week 5](week5/lab5.md)
+ 
+<!---
 ### Data
 * [week5.zip](https://www.dropbox.com/scl/fi/w89peadcqzuzooighefx2/DATA.zip?rlkey=1cmzr1gchmyyiupqxq4pjte80&dl=0)
 
