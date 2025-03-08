@@ -135,3 +135,75 @@ PLINK provides a built-in option to **prune related individuals** based on their
 ./plink --bfile 1kg_hm3 --rel-cutoff 0.1 --make-bed --out unrelated_samples
 
 ```
+## Compare Allele Frequencies with a Reference Dataset
+
+First, compute allele frequencies for both datasets using PLINK:
+
+```bash
+./plink --bfile 1kg_hm3  --freq --out 1kg_freq
+./plink --bfile hapmap_CEU_QC  --freq --out reference_freq
+```
+Merge and visualize in R:
+
+```R
+library(ggplot2)
+library(data.table)
+
+
+freq_sample <- fread("1kg_freq.frq")
+freq_ref <- fread("reference_freq.frq")
+
+colnames(freq_sample) <- colnames(freq_ref) <- c("CHR", "SNP", "A1", "A2", "MAF", "N")
+
+data_merged <- merge(freq_sample, freq_ref, by = "SNP", suffixes = c("_sample", "_ref"))
+
+ggplot(data_merged, aes(x = MAF_sample, y = MAF_ref)) +
+  geom_point(alpha = 0.5) +
+  geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+  labs(title = "Allele Frequency Comparison", x = "Sample MAF", y = "Reference MAF") +
+  theme_minimal()
+
+
+```
+
+
+
+## Compute Principal Components Analysis (PCA)
+
+To detect population structure, compute PCA:
+
+
+```bash
+./plink --bfile  1kg_hm3 \
+		--pca 10 \
+		--out 1kg_pca
+```	  
+
+```R
+library(ggplot2)
+columns=c("fid", "Sample.name", "pca1", "pca2", "pca3", "pca4",   "pca5", "pca6", "pca7", "pca8", "pca9", "pca10")
+
+pca<- read.table(file="1kg_pca.eigenvec", sep = "", header=F, col.names=columns)[,c(2:12)]
+
+ggplot(pca, aes(x=pca1, y=pca2))+ geom_point()+ theme_bw()+  xlab("PC1") + ylab("PC2")
+```	  
+
+```R
+geo <- read.table(file="1kg_samples.txt", sep = "\t",header=T)[,c(1,4,5,6,7)]
+
+
+data <- merge(geo, pca, by="Sample.name")
+ggplot(data, aes(x=pca1, y=pca2, col=Superpopulation.name))+
+     	 geom_point()+ theme_bw()+
+     	 xlab("PC1") + ylab("PC2")+
+ 	 labs(col = "")
+```	 	 
+	 
+```R
+
+ggplot(data, aes(x=pca1, y=pca2, col=Population.name))+
+     	 geom_point()+ theme_bw()+
+     	 xlab("PC1") + ylab("PC2")+
+ 	 labs(col = "")
+```	 	 	 
+	 
