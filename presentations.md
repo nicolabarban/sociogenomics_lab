@@ -65,3 +65,7 @@
 ### 10 Polygenic indexes
 * [Clinical use of current polygenic risk scores may exacerbate health disparities](papers/martin_2019.pdf)
 * [Human demographic history impacts genetic risk prediction across diverse populations](https://www.cell.com/action/showPdf?pii=S0002-9297%2817%2930107-6)
+### 11 Socio-economic status and genetic 
+* [Socio-economic status is a social construct with heritable components and genetic consequences](https://pmc.ncbi.nlm.nih.gov/articles/PMC7617559/pdf/EMS204020.pdf)
+* [Using genetics for social science](https://pmc.ncbi.nlm.nih.gov/articles/PMC8240138/pdf/nihms-1717352.pdf)
+
