@@ -9,12 +9,14 @@ In this lab we will learn:
 * Use the calculated PGS in R
 
 ## Data
+
+
 ```
-cd $HOME/Sociogenomics
- wget -O Data/lab_week6.zip https://www.dropbox.com/s/kwciw2cb19gkrzy/week6.zip?dl=0
-unzip -o -d Data/ Data/lab_week6.zip 
-mv Data/week6/*.*  Data/ 
-rm -r Data/week6/
+cd $HOME
+ wget -O lab_week7.zip https://www.dropbox.com/s/kwciw2cb19gkrzy/week6.zip?dl=0
+unzip lab_week7.zip 
+mv week6/*.*  ./
+rm -r week6/
 ```
 
 ## Calculate a "monogenic" score
@@ -23,16 +25,16 @@ We start from a "monogenic score" based only on 1 SNP rs9930506
 the file score_rs9930506.txt  includes the weights 
 
 ```
-plink 	--bfile Data/1kg_hm3_qc \
- 		--score Data/score_rs9930506.txt 1 2 3 \
- 		--pheno Data/BMI_pheno.txt \
- 		--out Results/1kg_FTOscore
+./plink 	--bfile 1kg_hm3_qc \
+ 		--score score_rs9930506.txt 1 2 3 \
+ 		--pheno BMI_pheno.txt \
+ 		--out 1kg_FTOscore
 ```
 
 This is our "monogenic score"
 
 ```
-head Results/1kg_FTOscore.profile
+head 1kg_FTOscore.profile
 ```
 
 ## Install R in google cloud
@@ -43,7 +45,7 @@ To calculate PGS we need additional software:
 2. R 
 
 ```
-cd Software
+
 wget https://github.com/choishingwan/PRSice/releases/download/2.3.5/PRSice_linux.zip
 unzip PRSice_linux.zip
 ```
@@ -67,15 +69,7 @@ Create symbolic links to PRSice in the Home directory
 cd $HOME
 cd Sociogenomics
 
-ln -s Software/PRSice.R
-ln -s Software/PRSice_linux
-```
 
-Setting up DATA and RESULTS folder variables
-
-```
-DATA="/home/nicola_barban/Sociogenomics/Data"
-RESULTS="/home/nicola_barban/Sociogenomics/Results"
 ```
 
 
@@ -83,36 +77,36 @@ Calculating a Polygenic score on BMI based on BMI.txt
 ```
 Rscript PRSice.R --dir . \
     --prsice ./PRSice_linux \
-    --base ${DATA}/BMI.txt \
-    --target ${DATA}/1kg_hm3_qc \
+    --base BMI.txt \
+    --target 1kg_hm3_qc \
     --snp MarkerName \
     --A1 A1 \
     --A2 A2 \
     --stat Beta \
     --pvalue Pval \
-    --pheno-file ${DATA}/BMI_pheno.txt \
+    --pheno-file BMI_pheno.txt \
     --bar-levels 1 \
     --fastscore \
     --binary-target F \
-    --out ${RESULTS}/BMI_score_all
+    --out BMI_score_all
 ```
 See the ouput. there are 9 duplicated SNPs that can be removed with the command extract
 ```
 Rscript PRSice.R --dir . \
     --prsice ./PRSice_linux \
-    --base ${DATA}/BMI.txt \
-    --target ${DATA}/1kg_hm3_qc \
+    --base BMI.txt \
+    --target 1kg_hm3_qc \
     --snp MarkerName \
     --A1 A1 \
     --A2 A2 \
     --stat Beta \
     --pvalue Pval \
-    --pheno-file ${DATA}/BMI_pheno.txt \
+    --pheno-file BMI_pheno.txt \
     --bar-levels 1 \
     --fastscore \
     --binary-target F \
-    --extract ${RESULTS}/BMI_score_all.valid \
-    --out ${RESULTS}/BMI_score_all
+    --extract BMI_score_all.valid \
+    --out BMI_score_all
 ```
 
 
@@ -120,8 +114,8 @@ Calculating different scores at various pvalues
 ```
 Rscript PRSice.R --dir . \
     --prsice ./PRSice_linux \
-    --base ${DATA}/BMI.txt \
-    --target ${DATA}/1kg_hm3_qc \
+    --base BMI.txt \
+    --target 1kg_hm3_qc \
     --thread 1 \
     --snp MarkerName \
     --A1 A1 \
@@ -133,40 +127,21 @@ Rscript PRSice.R --dir . \
     --all-score \
     --no-regress \
     --binary-target F \
-    --extract ${RESULTS}/BMI_score_all.valid \
-    --out ${RESULTS}/BMIscore_thresholds  
+    --extract BMI_score_all.valid \
+    --out BMIscore_thresholds  
 ```
 See results
 ```
-head ${RESULTS}/BMIscore_thresholds.all_score
+head BMIscore_thresholds.all_score
 ```
 
-```
-Rscript PRSice.R --dir . \
-    --prsice ./PRSice_linux\
-    --base ${DATA}/BMI.txt \
-    --target ${DATA}/1kg_hm3_qc \
-    --thread 1 \
-    --snp MarkerName \
-    --A1 A1 \
-    --A2 A2 \
-    --stat Beta \
-    --pvalue Pval \
-    --pheno-file ${DATA}/BMI_pheno.txt \
-    --interval 0.00005 \
-    --lower 0.0001 \
-    --quantile 20 \
-    --all-score \
-    --binary-target F \
-    --extract ${RESULTS}/BMI_score_all.valid \
-    --out ${RESULTS}/BMIscore_graphics
-```
+
 PGS on binary trait
 ```
 Rscript PRSice.R --dir . \
     --prsice ./PRSice_linux \
-    --base ${DATA}/BMI.txt \
-    --target ${DATA}/1kg_hm3_qc \
+    --base BMI.txt \
+    --target 1kg_hm3_qc \
     --thread 1 \
     --snp MarkerName \
     --A1 A1 \
@@ -174,14 +149,14 @@ Rscript PRSice.R --dir . \
     --stat Beta \
     --pvalue Pval \
     --no-clump F \
-    --pheno-file ${DATA}/Obesity_pheno.txt \
+    --pheno-file Obesity_pheno.txt \
     --interval 0.00005 \
     --lower 0.0001 \
     --quantile 5 \
     --all-score \
     --binary-target T \
-    --extract ${RESULTS}/BMI_score_all.valid \
-    --out ${RESULTS}/Obesity_score_graphics
+    --extract BMI_score_all.valid \
+    --out Obesity_score_graphics
 
 ```
 
@@ -189,7 +164,7 @@ Rscript PRSice.R --dir . \
 
 ```
 #import external data
-setwd("/home/nicola_barban/Sociogenomics/Results")
+setwd("/home/nicola_barban/Sociogenomics/")
 
 data<-read.table("BMIscore_thresholds.all_score", header=T)
 
@@ -203,7 +178,7 @@ data$PGS=(data$Pt_1-mean(data$Pt_1))/sd(data$Pt_1, na.rm=T)
  hist(data$PGS)
 
 # import external data with phenotype
-pheno_BMI<-read.table("../Data/BMI_pheno.txt", header=T)
+pheno_BMI<-read.table("BMI_pheno.txt", header=T)
 
 # merge the two datasets
 data.with.pheno<-merge(data,pheno_BMI, by="IID")
