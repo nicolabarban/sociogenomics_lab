@@ -38,21 +38,16 @@
 
  * [Lab week 5](week5/lab5.md)
  
+
+
+
+
+
+
+## Week 7
+
+* [Lab week 7](week7/lab7.md)
 <!---
-### Data
-* [week5.zip](https://www.dropbox.com/scl/fi/w89peadcqzuzooighefx2/DATA.zip?rlkey=1cmzr1gchmyyiupqxq4pjte80&dl=0)
-
-
-
-
-
-## Week 6
-
-* [Lab week 6](week6/lab_week6.md)
-
-### Data
-* [week6.zip](https://www.dropbox.com/s/kwciw2cb19gkrzy/week6.zip?dl=0)
-
 
 ## Week 8
 * [Lab week 8 PGS in R](week8/lab_week8.md)
