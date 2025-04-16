@@ -47,6 +47,7 @@
 ## Week 7
 
 * [Lab week 7](week7/lab7.md)
+
 <!---
 
 ## Week 8
