@@ -41,7 +41,7 @@ head 1kg_FTOscore.profile
 
 To calculate PGS we need additional software:
 
-1. PRSice (https://www.prsice.info)
+1. PRSice (https://choishingwan.github.io/PRSice/)
 2. R 
 
 ```
@@ -64,13 +64,7 @@ install.packages(c("ggplot2", "data.table"))
 ./PRSice_linux -h
 ```
 
-Create symbolic links to PRSice in the Home directory
-```
-cd $HOME
-cd Sociogenomics
 
-
-```
 
 
 Calculating a Polygenic score on BMI based on BMI.txt
