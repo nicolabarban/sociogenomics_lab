@@ -11,7 +11,7 @@
  Import the summary statistics in R
 ```
 library(tidyverse)
-EAgwasResults<-read_csv("EA4_results.txt")
+EAgwasResults<-read_csv("https://www.dropbox.com/scl/fi/mjqf8n3700awgged9za67/EA4_results.txt?rlkey=ihu2ll6tzfyh4g1aq3bg2ohfk&dl=1")
 
 head(EAgwasResults)
 dim(EAgwasResults)
