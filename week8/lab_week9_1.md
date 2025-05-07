@@ -73,7 +73,7 @@ qq(EAgwasResults_sub$P)
 Highlighting significant results
 
 ```
- hits<-EAgwasResults_sub[EAgwasResults_sub$P<5e-50,]
+ hits<-EAgwasResults_sub[EAgwasResults_sub$P<5e-8,]
 
 EAgwasResults_sub$highlight.snps<-0
 
