@@ -64,29 +64,41 @@ awk '!( ($3=="A" && $4=="T") || \
         ($3=="G" && $4=="C") || \
         ($3=="C" && $4=="G")) {print}' |\
     gzip > parkinson.QC.gz
+	
+rm 	parkinson.gz
 ```
 
 ## Working on the target Data
 
-selecting EUR samples
 ```
-awk 'NR>1 && ($6=="EUR")  {print 0, $1}' 1kg_samples.txt >EUR_sample.txt
+wget "https://www.dropbox.com/scl/fi/cspm2i00jiwxm6hl4lmx1/Synthetic_ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz?rlkey=5ejdw6fzif3uhqjk460e2q9pu&dl=1" -O Synthetic_ALL.chr22.vcf.gz
+
 
 ```
+
+```
+./plink --vcf  Synthetic_ALL.chr22.vcf.gz \
+		--snps-only \
+		--make-bed \
+      	--out data_chr22
+		
+```
+
+
 Quality control for Base file
 
 ```
 ./plink \
-    --bfile 1kg_hm3 \
-    --maf 0.01 \
-    --hwe 1e-6 \
-    --geno 0.01 \
-    --mind 0.01 \
-	--keep EUR_sample.txt \
-    --write-snplist \
-    --make-just-fam \
-    --out EUR.QC
+    --bfile data_chr22 \
+    --maf 0.05 \
+    --geno 0.05 \
+    --mind 0.05 \
+    --hwe 0.00001 \
+    --rel-cutoff 0.1 \
+	--make-bed \
+    --out data_chr22_QC
 ```
+
 
 ## Calculating PGI with plink
 
@@ -96,27 +108,28 @@ Linkage disequilibrium, which corresponds to the correlation between the genotyp
 
 ```
 ./plink \
-    --bfile 1kg_hm3 \
-    --clump-p1 1 \
+    --bfile data_chr22_QC \
+	--clump-p1 1 \
     --clump-r2 0.1 \
     --clump-kb 250 \
     --clump parkinson.QC.gz \
     --clump-snp-field rsid \
     --clump-field p_value \
-    --out EUR
+    --out data_chr22_QC
 	
 ```
 
 
-Extracting from the file EUR.clumped the list of SNPs
+
+Extracting from the file data_chr22_QC.clumped the list of SNPs
 
 
-This will generate EUR.clumped, containing the index SNPs after clumping is performed. We can extract the index SNP ID by performing the following command:
+This will generate data_chr22_QC.clumped, containing the index SNPs after clumping is performed. We can extract the index SNP ID by performing the following command:
 $3 because the third column contains the SNP ID
 
 
 ```
-awk 'NR!=1{print $3}' EUR.clumped >  EUR.valid.snp
+awk 'NR!=1{print $3}' data_chr22_QC.clumped >  data_chr22_QC.valid.snp
 ```
 
 
@@ -131,12 +144,12 @@ head parkinson.QC.tsv
 
 
 ./plink \
-    --bfile 1kg_hm3 \
+    --bfile data_chr22_QC \
     --score parkinson.QC.tsv 9 3 5 header \
-    --extract EUR.valid.snp \
-    --out EUR
+    --extract data_chr22_QC.valid.snp \
+    --out data_chr22_parkinson
 	
-head EUR.profile 	
+head data_chr22_parkinson.profile 	
 	
 ```
 
@@ -144,12 +157,25 @@ head EUR.profile
 
 Calculate scores using all SNPs
 
+
+Install R on the virtual machine
+```
+sudo apt-get install r-base 
+```
+let’s see if it works
+
+
+```
+R
+install.packages(c("ggplot2", "data.table"))
+```
+
 ```
 
 Rscript PRSice.R \
-    --prsice PRSice_mac \
+    --prsice  PRSice_linux \
     --base parkinson.QC.gz \
-    --target 1kg_hm3 \
+    --target data_chr22_QC \
     --base-maf effect_allele_frequency:0.05 \
     --thread 1 \
     --snp rsid \
@@ -161,7 +187,7 @@ Rscript PRSice.R \
     --bar-levels 1 \
     --no-regress \
     --binary-target F \
-    --extract EUR.valid.snp \
+    --extract data_chr22_QC.valid.snp \
     --out Parkinson_score_all
 ```
 
@@ -171,9 +197,9 @@ here using different threesholds
 ```
 
 Rscript PRSice.R \
-    --prsice PRSice_mac \
+    --prsice  PRSice_linux \
     --base parkinson.QC.gz \
-    --target 1kg_hm3 \
+    --target data_chr22_QC \
     --base-maf effect_allele_frequency:0.05 \
     --thread 1 \
     --snp rsid \
@@ -186,7 +212,7 @@ Rscript PRSice.R \
     --all-score \
     --no-regress \
     --binary-target F \
-    --extract EUR.valid.snp \
+    --extract data_chr22_QC.valid.snp \
     --out Parkinson_score_thresholds
 ```
 
@@ -200,14 +226,13 @@ data_PRSice<-read.table("Parkinson_score_thresholds.all_score", header=T)
 head(data_PRSice)
 
 
-data_Plink<-read.table("EUR.profile", header=T)
+data_Plink<-read.table("data_chr22_parkinson.profile", header=T)
 
 
 data_merge<-merge(data_PRSice,data_Plink, by=c("FID", "IID"))
  cor(data_merge$SCORE, data_merge$Pt_1)
  
- cor(data_merge$SCORE, data_merge$Pt_5e.08)
- 
+cor(data_merge$SCORE, data_merge$Pt_5e.05) 
  
  
 ```

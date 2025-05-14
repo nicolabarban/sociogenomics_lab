@@ -62,7 +62,7 @@
 
 
 ## Week 9
-* [Tutorial PG](week9/tutorialPGI.md)
+* [Tutorial PGI](week9/tutorialPGI.md)
 * [Data](https://www.dropbox.com/scl/fo/418u49flretn9itwrhrve/AB39p8lhPCtFFzu4EbadWo8?rlkey=vnkt10hl5ev23qt973gk370l6&dl=0)
 
 
